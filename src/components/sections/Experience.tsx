@@ -88,7 +88,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-[60px] md:py-[160px] px-6" style={{ background: "transparent" }}>
       <AmbientFlares count={3} intensity="low" />
-      <MoonScene className="absolute left-0 top-0 h-full w-[180px] opacity-30 md:w-[480px] md:opacity-100" />
+      <MoonScene className="absolute inset-0 opacity-[0.13] md:inset-auto md:left-0 md:top-0 md:h-full md:w-[480px] md:opacity-100" />
       <div className="relative mx-auto max-w-4xl" style={{ zIndex: 1 }}>
         <div ref={headingRef}>
           <SectionMarker />
