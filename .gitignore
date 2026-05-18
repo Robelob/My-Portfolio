@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 bun.lockb
+package-lock.json
 dist
 dist-ssr
 .output
