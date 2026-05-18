@@ -24,8 +24,9 @@ export default function UniverseBackground() {
     setSize();
     window.addEventListener("resize", setSize);
 
+    const isMobile = window.innerWidth < 768;
     // Stars distributed evenly on a full sphere shell (large radius for full-screen coverage)
-    const stars: Star[] = Array.from({ length: 700 }, () => {
+    const stars: Star[] = Array.from({ length: isMobile ? 400 : 700 }, () => {
       const theta = Math.random() * Math.PI * 2;
       const phi   = Math.acos(2 * Math.random() - 1);
       const rr    = 120 + Math.random() * 80;
@@ -33,8 +34,8 @@ export default function UniverseBackground() {
         x:      rr * Math.sin(phi) * Math.cos(theta),
         y:      rr * Math.sin(phi) * Math.sin(theta),
         z:      rr * Math.cos(phi),
-        r:      0.4 + Math.random() * 1.2,
-        opacity: 0.3 + Math.random() * 0.7,
+        r:      isMobile ? 0.6 + Math.random() * 1.6 : 0.4 + Math.random() * 1.2,
+        opacity: isMobile ? 0.5 + Math.random() * 0.5 : 0.3 + Math.random() * 0.7,
         speed:  0.4 + Math.random() * 1.2,
         phase:  Math.random() * Math.PI * 2,
         isCyan: Math.random() < 0.06,

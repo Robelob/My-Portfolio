@@ -47,7 +47,7 @@ export default function Skills() {
   return (
     <section id="skills" className="relative py-[60px] md:py-[160px] px-6" style={{ background: "transparent" }}>
       <AmbientFlares count={5} intensity="medium" />
-      <SectionCanvas className="absolute right-0 top-0 h-full w-[380px] opacity-80 hidden md:block">
+      <SectionCanvas className="absolute right-0 top-0 h-full w-[160px] opacity-30 md:w-[380px] md:opacity-80">
         <CrystalShards />
       </SectionCanvas>
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 1 }}>

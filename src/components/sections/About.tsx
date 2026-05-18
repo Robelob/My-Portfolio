@@ -70,7 +70,7 @@ export default function About() {
       {/* Gradient overlay to dissolve the hard seam from the hero section above */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 140, background: "linear-gradient(to bottom, #060608, transparent)", zIndex: 10, pointerEvents: "none" }} />
       <AmbientFlares count={4} intensity="low" />
-      <EarthScene className="absolute right-0 top-0 h-full w-[520px] hidden md:block" />
+      <EarthScene className="absolute right-0 top-0 h-full w-[180px] opacity-30 md:w-[520px] md:opacity-100" />
       <div className="relative mx-auto grid w-full max-w-6xl gap-16 md:grid-cols-2 md:items-center" style={{ zIndex: 1 }}>
         <div ref={leftRef}>
           <SectionMarker />

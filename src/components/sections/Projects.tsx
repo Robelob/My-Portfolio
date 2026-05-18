@@ -84,7 +84,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-[60px] md:py-[160px] px-6" style={{ background: "transparent" }}>
       <AmbientFlares count={4} intensity="low" />
-      <SectionCanvas className="absolute left-0 top-0 h-full w-[380px] opacity-80 hidden md:block">
+      <SectionCanvas className="absolute left-0 top-0 h-full w-[160px] opacity-30 md:w-[380px] md:opacity-80">
         <RingObject />
       </SectionCanvas>
       <div className="relative mx-auto max-w-6xl" style={{ zIndex: 1 }}>

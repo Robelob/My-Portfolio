@@ -52,11 +52,18 @@ export default function HeroText() {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 280], [1, 0]);
   const y       = useTransform(scrollY, [0, 280], [0, -40]);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <>
       <Timestamp />
-      <motion.div style={{ opacity, y, position: "fixed", bottom: 64, left: 36, zIndex: 10, pointerEvents: "none" }}>
+      <motion.div style={{ opacity, y, position: "fixed", bottom: isMobile ? 100 : 64, left: isMobile ? 20 : 36, zIndex: 10, pointerEvents: "none" }}>
         {/* Name block */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}

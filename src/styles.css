@@ -69,7 +69,7 @@
   --border-cyan:   rgba(0, 212, 255, 0.2);
 
   /* ─── Type scale ──────────────────────────────────────── */
-  --text-hero:    clamp(4.5rem, 10vw, 8rem);
+  --text-hero:    clamp(2.6rem, 10vw, 8rem);
   --text-section: clamp(2.2rem, 5vw, 3.5rem);
   --text-body:    1.0625rem;
   --text-caption: 0.8125rem;

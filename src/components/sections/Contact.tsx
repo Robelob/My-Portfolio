@@ -60,7 +60,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-[60px] md:py-[160px] px-6" style={{ background: "transparent" }}>
       <AmbientFlares count={6} intensity="medium" />
-      <SectionCanvas className="absolute inset-0 opacity-60 hidden md:block">
+      <SectionCanvas className="absolute inset-0 opacity-30 md:opacity-60">
         <DistantPlanet />
       </SectionCanvas>
       <div className="relative mx-auto w-full max-w-xl" style={{ zIndex: 1 }}>
