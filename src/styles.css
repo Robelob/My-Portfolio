@@ -1,0 +1,158 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* ─── Cinematic Monochrome + Cyan Design System ───────── */
+  --bg:            #060608;
+  --surface-1:     #0d0d0f;
+  --surface-2:     #141416;
+  --grey-700:      #383840;
+  --grey-600:      #565662;
+  --grey-500:      #787886;
+  --grey-400:      #9f9fac;
+  --grey-300:      #c0c0cc;
+  --grey-200:      #d8d8e2;
+  --grey-100:      #ebebf0;
+  --white:         #f2f2f4;
+  --cyan:          #00d4ff;
+  --cyan-dim:      #0891b2;
+  --cyan-ghost:    rgba(0, 212, 255, 0.08);
+  --cyan-glow:     rgba(0, 212, 255, 0.15);
+  --border:        rgba(255, 255, 255, 0.06);
+  --border-bright: rgba(255, 255, 255, 0.12);
+  --border-cyan:   rgba(0, 212, 255, 0.2);
+
+  /* ─── Type scale ──────────────────────────────────────── */
+  --text-hero:    clamp(4.5rem, 10vw, 8rem);
+  --text-section: clamp(2.2rem, 5vw, 3.5rem);
+  --text-body:    1.0625rem;
+  --text-caption: 0.8125rem;
+  --text-label:   0.6875rem;
+
+  /* ─── shadcn tokens (kept for component compat) ──────── */
+  --radius: 0.625rem;
+  --background: #060608;
+  --foreground: #e8e8ec;
+  --card: #0d0d0f;
+  --card-foreground: #e8e8ec;
+  --popover: #0d0d0f;
+  --popover-foreground: #e8e8ec;
+  --primary: #e8e8ec;
+  --primary-foreground: #060608;
+  --secondary: #141416;
+  --secondary-foreground: #e8e8ec;
+  --muted: #141416;
+  --muted-foreground: #7f7f88;
+  --accent: #141416;
+  --accent-foreground: #e8e8ec;
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: #e8e8ec;
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(0, 212, 255, 0.4);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #0d0d0f;
+  --sidebar-foreground: #e8e8ec;
+  --sidebar-primary: #e8e8ec;
+  --sidebar-primary-foreground: #060608;
+  --sidebar-accent: #141416;
+  --sidebar-accent-foreground: #e8e8ec;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: rgba(0, 212, 255, 0.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--grey-100);
+    overflow-x: hidden;
+    letter-spacing: 0.02em;
+  }
+
+  ::selection {
+    background: var(--cyan-ghost);
+  }
+}
+
+/* ─── Flare particle animation ────────────────────────────────────────────── */
+@keyframes flare-pulse {
+  0%   { opacity: 0;                    transform: scale(0.2); }
+  20%  { opacity: var(--flare-peak, 0.7); transform: scale(1); }
+  65%  { opacity: calc(var(--flare-peak, 0.7) * 0.6); transform: scale(0.8); }
+  100% { opacity: 0;                    transform: scale(0.3); }
+}
+
+/* ─── Project badge blink ─────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+/* ─── Scroll indicator breathe ────────────────────────────────────────────── */
+@keyframes breathe {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
+
+/* ─── Experience timeline dot pulse ring ──────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
