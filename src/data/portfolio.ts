@@ -166,20 +166,20 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Robelob/Ambar-AI-Video-Editor-Plugin-For-Premiere-Pro",
   },
   {
-    title: "Service Request Platform — Atos Poland",
+    title: "Autonomous Bug Resolution Pipeline — Atos Poland",
     description:
-      "Built to replace fragmented email threads and spreadsheet-based tracking that were causing coordination failures across 4+ cross-functional teams at Atos Poland. The platform (Vue.js + Node.js + Firestore) centralised all service requests into a single structured queue with automated routing, real-time status tracking, and team-specific dashboards — no process changes required from end users. At peak, handling 200+ requests/month across IT, Infrastructure, and Application teams. Eliminated 15+ hours of weekly coordination overhead that previously went into chasing updates and manually reassigning tasks.",
-    tech: ["Vue.js", "Node.js", "Firestore", "REST APIs"],
+      "An end-to-end pipeline that takes a bug report from submission to a ready-to-merge pull request — with minimal engineer involvement. Users file reports through a Vue.js app; an LLM immediately enhances the raw input, researches the likely root cause, and drafts a proposed fix with supporting context. Octokit then opens a fully structured GitHub Issue and automatically assigns GitHub Copilot to implement the fix, pre-loaded with all of the LLM's research. By the time an engineer is notified, a draft PR is already waiting for review — they read, validate, and merge. Reduced mean incident resolution time from 4h to 2.8h (30%) not by making engineers faster, but by removing triage and initial implementation from their workload entirely.",
+    tech: ["Vue.js", "Node.js", "Firestore", "Octokit", "GitHub Copilot", "GCP"],
     status: "completed",
     badge: "Internal · Atos",
     liveUrl: null,
     githubUrl: null,
   },
   {
-    title: "AI Bug-Reporting System — Atos Poland",
+    title: "Service Request Platform — Atos Poland",
     description:
-      "On-call engineers at Atos Poland were losing 30–40 minutes per incident just parsing freeform bug reports before they could begin triaging. This pipeline intercepts raw user-submitted reports and uses an LLM to extract severity, reproduction steps, affected components, and suggested labels — then opens a fully structured GitHub Issue automatically. Integrated into the existing incident workflow with no UI changes for reporters. After rollout, mean incident resolution time dropped from 4h to 2.8h — a 30% reduction — driven entirely by giving engineers structured, actionable context from the first moment rather than unformatted text dumps.",
-    tech: ["Node.js", "LLMs", "GitHub API", "REST APIs"],
+      "Built to replace fragmented email threads and spreadsheet-based tracking that were causing coordination failures across 4+ cross-functional teams at Atos Poland. The platform (Vue.js + Node.js + Firestore) centralised all service requests into a single structured queue with automated routing, real-time status tracking, and team-specific dashboards — no process changes required from end users. At peak, handling 200+ requests/month across IT, Infrastructure, and Application teams. Eliminated 15+ hours of weekly coordination overhead that previously went into chasing updates and manually reassigning tasks.",
+    tech: ["Vue.js", "Node.js", "Firestore", "REST APIs"],
     status: "completed",
     badge: "Internal · Atos",
     liveUrl: null,
