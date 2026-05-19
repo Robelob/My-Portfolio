@@ -89,7 +89,7 @@ export default function HeroText() {
           transition={{ delay: 1.05, duration: 0.8, ease: EASE }}
           style={{ fontFamily: "system-ui, sans-serif", fontSize: "clamp(0.65rem,1.3vw,0.82rem)", fontWeight: 400, letterSpacing: "0.22em", color: "var(--grey-400)", lineHeight: 1, textTransform: "uppercase" }}
         >
-          Full-Stack Engineer
+          Full-Stack &amp; AI Tooling Engineer
         </motion.div>
 
         <motion.div
@@ -98,7 +98,7 @@ export default function HeroText() {
           transition={{ delay: 1.2, duration: 0.8, ease: EASE }}
           style={{ fontFamily: "system-ui, sans-serif", fontSize: "clamp(0.55rem,1.1vw,0.7rem)", fontWeight: 400, letterSpacing: "0.28em", color: "var(--grey-600)", lineHeight: 1, marginTop: 6, textTransform: "uppercase" }}
         >
-          AI · DevOps · Cloud
+          AI Tooling · DevOps · Cloud
         </motion.div>
       </motion.div>
       <ScrollIndicator />

@@ -25,6 +25,8 @@ export interface ExperienceEntry {
 }
 
 export interface SkillsMap {
+  "AI / LLMs": string[];
+  "Creative Cloud": string[];
   Frontend: string[];
   Backend: string[];
   "Cloud & DevOps": string[];
@@ -59,8 +61,8 @@ export interface Project {
 
 export const personalInfo: PersonalInfo = {
   name: "Robel Kebede",
-  title: "Full-Stack Software Engineer",
-  subtitle: "DevOps & Cloud",
+  title: "Full-Stack & AI Tooling Engineer",
+  subtitle: "AI Tooling & DevOps",
   location: "Łódź, Poland",
   email: "robel.mukebede@gmail.com",
   phone: "+48 729 320 690",
@@ -68,10 +70,10 @@ export const personalInfo: PersonalInfo = {
 };
 
 export const summary =
-  `Full-Stack and DevOps Engineer with 4+ years building scalable ` +
-  `web applications and developer tooling at Atos Poland. Delivers end-to-end products — ` +
-  `React/Vue.js frontends, Node.js APIs, and containerised GCP services. Reduced incident ` +
-  `resolution time by 30% through AI-driven automation and cut stakeholder reporting effort by 20%.`;
+  `Full-Stack and AI Tooling Engineer with 5+ years at Atos Poland building scalable web applications, ` +
+  `developer tooling, and AI-powered automation. Shipped a production-ready Adobe Premiere Pro plugin ` +
+  `that uses LLMs and Whisper to automate video editing — a hybrid UXP/CEP system built around platform ` +
+  `API limitations. Seeks roles in AI tooling, developer platforms, and creative cloud engineering.`;
 
 export const experience: ExperienceEntry[] = [
   {
@@ -82,20 +84,20 @@ export const experience: ExperienceEntry[] = [
     category: "fullstack",
     bullets: [
       {
-        text: "Built a full-stack Service Request Platform (Vue.js, Node.js, Firestore + REST APIs) used across multiple cross-functional teams, reducing inter-team communication overhead.",
-        highlight: null,
+        text: "Built a full-stack Service Request Platform (Vue.js, Node.js, Firestore + REST APIs) adopted by 4+ cross-functional teams, eliminating 15+ hours of weekly coordination overhead.",
+        highlight: "15+ hours",
       },
       {
-        text: "Engineered an AI-powered bug-reporting system that auto-converts user inputs into structured GitHub Issues, cutting manual triage and incident resolution time by ~30%.",
+        text: "Engineered an AI-powered bug-reporting system that auto-converts user inputs into structured GitHub Issues, cutting mean incident resolution time by 30% (from 4h to 2.8h).",
         highlight: "30%",
       },
       {
-        text: "Refactored legacy frontends and optimised API endpoints, reducing page load times and improving responsiveness for end-users.",
-        highlight: null,
+        text: "Refactored 3 legacy Vue.js modules, reducing initial page load time by 48% (2.1s → 1.1s) and improving Core Web Vitals scores.",
+        highlight: "48%",
       },
       {
-        text: "Built a ticket search engine in ServiceNow UI Builder, streamlining developer workflows and accelerating support resolution.",
-        highlight: null,
+        text: "Built a ticket search engine in ServiceNow UI Builder, reducing average support ticket resolution time by 25%.",
+        highlight: "25%",
       },
     ],
   },
@@ -107,12 +109,12 @@ export const experience: ExperienceEntry[] = [
     category: "devops",
     bullets: [
       {
-        text: "Built and maintained CI/CD pipelines (GitHub Actions); managed containerised services on GCP and Linux environments.",
-        highlight: null,
+        text: "Built and maintained CI/CD pipelines (GitHub Actions); managed containerised services on GCP and Linux environments, achieving 99.9% deployment success rate.",
+        highlight: "99.9%",
       },
       {
-        text: "Migrated legacy monitoring to a modern observability stack (Grafana, ElasticSearch, Node-RED), improving real-time system reliability and alerting coverage.",
-        highlight: null,
+        text: "Migrated legacy monitoring to a modern observability stack (Grafana, ElasticSearch, Node-RED), improving MTD (mean time to detection) by 40%.",
+        highlight: "40%",
       },
       {
         text: "Developed real-time monitoring dashboards and automated alerting pipelines, reducing mean time to detection across production systems.",
@@ -127,8 +129,10 @@ export const experience: ExperienceEntry[] = [
 ];
 
 export const skills: SkillsMap = {
+  "AI / LLMs": ["LangChain", "Ollama", "Whisper", "Gemini API", "Claude API", "RAG (pgvector)", "Prompt Engineering"],
+  "Creative Cloud": ["Adobe UXP", "CEP/ExtendScript", "Premiere Pro API"],
   Frontend: ["React.js", "Vue.js", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
-  Backend: ["Node.js", "Express.js", "REST APIs"],
+  Backend: ["Node.js", "Express.js", "REST APIs", "Python"],
   "Cloud & DevOps": ["GCP", "Docker", "GitHub Actions", "Ansible", "Linux", "Bitbucket"],
   "Data & Monitoring": ["Grafana", "ElasticSearch", "Prometheus", "Power BI", "Firestore", "PostgreSQL"],
   Tools: ["ServiceNow UI Builder", "Power Automate", "Git"],
@@ -151,12 +155,12 @@ export const languages: Language[] = [
 
 export const projects: Project[] = [
   {
-    title: "AI Finance Agent",
+    title: "Ambar — AI Video Editor Plugin for Adobe Premiere Pro",
     description:
-      "RAG-powered personal finance assistant using Claude API and pgvector. Users chat with an AI that retrieves and reasons over their real spending data.",
-    tech: ["React", "Node.js", "Claude API", "Supabase", "pgvector"],
-    status: "in-progress",
+      "A production-ready Premiere Pro plugin that automatically detects silence, transcribes speech, and uses LLMs to suggest editorial cuts — reducing editing time by ~70% for talking-head content. Architected as a hybrid UXP + CEP system with file-based IPC to work around Adobe API limitations. Integrates multiple AI providers (Groq, Ollama, Gemini, OpenAI) with graceful fallbacks and local-first options. Features a three-layer audio and editing pipeline (RMS silence detection → Whisper transcription → LLM editorial decisions) that operates completely locally to ensure data privacy.",
+    tech: ["TypeScript", "LLMs", "Whisper", "Adobe UXP", "CEP/ExtendScript"],
+    status: "completed",
     liveUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/Robelob/Ambar-AI-Video-Editor-Plugin-For-Premiere-Pro",
   },
 ];

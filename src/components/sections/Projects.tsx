@@ -15,7 +15,14 @@ function SectionMarker() {
 }
 
 function StatusBadge({ status }: { status: Project["status"] }) {
-  if (status === "completed") return null;
+  if (status === "completed") {
+    return (
+      <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "monospace", fontSize: 10, letterSpacing: "0.15em", color: "rgba(120,220,120,0.8)", textTransform: "uppercase" }}>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "rgba(120,220,120,0.8)" }} />
+        Beta Version
+      </span>
+    );
+  }
   const label = status === "in-progress" ? "In Progress" : "Planned";
   return (
     <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "monospace", fontSize: 10, letterSpacing: "0.15em", color: "var(--cyan)", textTransform: "uppercase" }}>
@@ -53,12 +60,34 @@ function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       <div style={{ display: "flex", gap: 12 }}>
-        <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
-          <Github size={12} /> GitHub
-        </button>
-        <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
-          <ExternalLink size={12} /> Live
-        </button>
+        {project.githubUrl ? (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
+          >
+            <Github size={12} /> GitHub
+          </a>
+        ) : (
+          <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
+            <Github size={12} /> GitHub
+          </button>
+        )}
+        {project.liveUrl ? (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
+          >
+            <ExternalLink size={12} /> Live
+          </a>
+        ) : (
+          <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
+            <ExternalLink size={12} /> Live
+          </button>
+        )}
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 
 const LINKS = [
-  { icon: Mail,     href: `mailto:${personalInfo.email}`, label: "Email" },
-  { icon: Github,   href: "https://github.com/Robelob",   label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/robel-kebede", label: "LinkedIn" },
+  { icon: Mail,   href: `mailto:${personalInfo.email}`,                                                    label: "Email" },
+  { icon: Github, href: "https://github.com/Robelob/Ambar-AI-Video-Editor-Plugin-For-Premiere-Pro", label: "GitHub" },
 ] as const;
 
 export default function Footer() {

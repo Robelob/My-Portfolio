@@ -6,9 +6,9 @@ import AmbientFlares from "@/components/effects/AmbientFlares";
 import { EarthScene } from "@/components/three/CinematicModels";
 
 const STATS = [
-  { value: "4",  suffix: "+",  label: "YEARS AT ATOS" },
+  { value: "5",  suffix: "+",  label: "YEARS AT ATOS" },
+  { value: "70", suffix: "%",  label: "EDITING TIME CUT" },
   { value: "30", suffix: "%",  label: "FASTER INCIDENTS" },
-  { value: "20", suffix: "%",  label: "TIME SAVED" },
 ] as const;
 
 function SectionMarker() {
