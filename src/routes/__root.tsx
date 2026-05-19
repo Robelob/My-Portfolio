@@ -29,15 +29,15 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Robel Kebede — Full-Stack Engineer" },
-      { name: "description", content: "Portfolio of Robel Kebede, Full-Stack Software Engineer specialising in React, Node.js, AI tooling, and GCP." },
+      { title: "Robel Kebede — Full-Stack & AI Tooling Engineer" },
+      { name: "description", content: "Portfolio of Robel Kebede, Full-Stack & AI Tooling Engineer specialising in React, Vue.js, Node.js, AI-powered tooling, and GCP." },
       { name: "author", content: "Robel Kebede" },
-      { property: "og:title", content: "Robel Kebede — Full-Stack Engineer" },
-      { property: "og:description", content: "Full-Stack & DevOps Engineer building scalable web apps and AI-powered developer tools." },
+      { property: "og:title", content: "Robel Kebede — Full-Stack & AI Tooling Engineer" },
+      { property: "og:description", content: "Full-Stack & AI Tooling Engineer building scalable web apps and AI-powered developer tools." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Robel Kebede — Full-Stack Engineer" },
-      { name: "twitter:description", content: "Full-Stack & DevOps Engineer building scalable web apps and AI-powered developer tools." },
+      { name: "twitter:title", content: "Robel Kebede — Full-Stack & AI Tooling Engineer" },
+      { name: "twitter:description", content: "Full-Stack & AI Tooling Engineer building scalable web apps and AI-powered developer tools." },
     ],
     links: [
       {

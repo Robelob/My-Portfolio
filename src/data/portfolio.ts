@@ -53,6 +53,7 @@ export interface Project {
   description: string;
   tech: string[];
   status: "in-progress" | "completed" | "planned";
+  badge?: string;
   liveUrl: string | null;
   githubUrl: string | null;
 }
@@ -160,7 +161,28 @@ export const projects: Project[] = [
       "A production-ready Premiere Pro plugin that automatically detects silence, transcribes speech, and uses LLMs to suggest editorial cuts — reducing editing time by ~70% for talking-head content. Architected as a hybrid UXP + CEP system with file-based IPC to work around Adobe API limitations. Integrates multiple AI providers (Groq, Ollama, Gemini, OpenAI) with graceful fallbacks and local-first options. Features a three-layer audio and editing pipeline (RMS silence detection → Whisper transcription → LLM editorial decisions) that operates completely locally to ensure data privacy.",
     tech: ["TypeScript", "LLMs", "Whisper", "Adobe UXP", "CEP/ExtendScript"],
     status: "completed",
+    badge: "Beta Version",
     liveUrl: null,
     githubUrl: "https://github.com/Robelob/Ambar-AI-Video-Editor-Plugin-For-Premiere-Pro",
+  },
+  {
+    title: "Service Request Platform — Atos Poland",
+    description:
+      "Built to replace fragmented email threads and spreadsheet-based tracking that were causing coordination failures across 4+ cross-functional teams at Atos Poland. The platform (Vue.js + Node.js + Firestore) centralised all service requests into a single structured queue with automated routing, real-time status tracking, and team-specific dashboards — no process changes required from end users. At peak, handling 200+ requests/month across IT, Infrastructure, and Application teams. Eliminated 15+ hours of weekly coordination overhead that previously went into chasing updates and manually reassigning tasks.",
+    tech: ["Vue.js", "Node.js", "Firestore", "REST APIs"],
+    status: "completed",
+    badge: "Internal · Atos",
+    liveUrl: null,
+    githubUrl: null,
+  },
+  {
+    title: "AI Bug-Reporting System — Atos Poland",
+    description:
+      "On-call engineers at Atos Poland were losing 30–40 minutes per incident just parsing freeform bug reports before they could begin triaging. This pipeline intercepts raw user-submitted reports and uses an LLM to extract severity, reproduction steps, affected components, and suggested labels — then opens a fully structured GitHub Issue automatically. Integrated into the existing incident workflow with no UI changes for reporters. After rollout, mean incident resolution time dropped from 4h to 2.8h — a 30% reduction — driven entirely by giving engineers structured, actionable context from the first moment rather than unformatted text dumps.",
+    tech: ["Node.js", "LLMs", "GitHub API", "REST APIs"],
+    status: "completed",
+    badge: "Internal · Atos",
+    liveUrl: null,
+    githubUrl: null,
   },
 ];

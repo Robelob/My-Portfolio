@@ -14,12 +14,13 @@ function SectionMarker() {
   );
 }
 
-function StatusBadge({ status }: { status: Project["status"] }) {
+function StatusBadge({ status, badge }: { status: Project["status"]; badge?: string }) {
   if (status === "completed") {
+    const label = badge ?? "Completed";
     return (
-      <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "monospace", fontSize: 10, letterSpacing: "0.15em", color: "rgba(120,220,120,0.8)", textTransform: "uppercase" }}>
-        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "rgba(120,220,120,0.8)" }} />
-        Beta Version
+      <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: "monospace", fontSize: 10, letterSpacing: "0.15em", color: "rgba(120,220,120,0.8)", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "rgba(120,220,120,0.8)", flexShrink: 0 }} />
+        {label}
       </span>
     );
   }
@@ -49,7 +50,7 @@ function ProjectCard({ project }: { project: Project }) {
       }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
         <h3 style={{ fontSize: 16, fontWeight: 300, color: hovered ? "var(--cyan)" : "var(--white)", letterSpacing: "0.04em", transition: "color 0.3s" }}>{project.title}</h3>
-        <StatusBadge status={project.status} />
+        <StatusBadge status={project.status} badge={project.badge} />
       </div>
       <p style={{ fontSize: 14, lineHeight: 1.8, color: hovered ? "var(--grey-300)" : "var(--grey-400)", flex: 1, transition: "color 0.3s" }}>{project.description}</p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -59,50 +60,34 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <div style={{ display: "flex", gap: 12 }}>
-        {project.githubUrl ? (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
-          >
-            <Github size={12} /> GitHub
-          </a>
-        ) : (
-          <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
-            <Github size={12} /> GitHub
-          </button>
-        )}
-        {project.liveUrl ? (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
-          >
-            <ExternalLink size={12} /> Live
-          </a>
-        ) : (
-          <button disabled style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--grey-700)", cursor: "not-allowed", letterSpacing: "0.08em" }}>
-            <ExternalLink size={12} /> Live
-          </button>
-        )}
-      </div>
+      {(project.githubUrl || project.liveUrl) && (
+        <div style={{ display: "flex", gap: 12 }}>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
+            >
+              <Github size={12} /> GitHub
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 2, padding: "6px 14px", fontSize: 11, color: "var(--cyan)", cursor: "pointer", letterSpacing: "0.08em", textDecoration: "none", transition: "border-color 0.2s, color 0.2s" }}
+            >
+              <ExternalLink size={12} /> Live
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
-function PlaceholderCard() {
-  return (
-    <div style={{ border: "1px dashed rgba(255,255,255,0.08)", borderRadius: 2, minHeight: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ textAlign: "center" }}>
-        <p style={{ fontFamily: "monospace", fontSize: 11, color: "var(--grey-700)", letterSpacing: "0.15em", textTransform: "uppercase" }}>More coming soon</p>
-        <p style={{ fontSize: 12, color: "var(--grey-700)", marginTop: 6, fontStyle: "italic" }}>Currently in the lab</p>
-      </div>
-    </div>
-  );
-}
 
 export default function Projects() {
   const headingRef = useRef<HTMLDivElement>(null);
@@ -120,15 +105,14 @@ export default function Projects() {
         <div ref={headingRef}>
           <SectionMarker />
           <h2 style={{ fontSize: "var(--text-section)", fontWeight: 300, color: "var(--grey-100)", lineHeight: 1.1, letterSpacing: "0.02em", marginBottom: 64 }}>
-            What I'm<br />
-            <span style={{ color: "var(--white)" }}>currently <span style={{ color: "var(--cyan)" }}>building</span></span>
+            Things I've<br />
+            <span style={{ color: "var(--white)" }}>shipped & <span style={{ color: "var(--cyan)" }}>built</span></span>
           </h2>
         </div>
         <div ref={gridRef} className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
-          <PlaceholderCard />
         </div>
       </div>
     </section>
