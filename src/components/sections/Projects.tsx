@@ -40,6 +40,8 @@ function ProjectCard({ project }: { project: Project }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        position: "relative",
+        overflow: "hidden",
         borderTop: "1px solid var(--cyan)",
         borderLeft: `1px solid ${hovered ? "rgba(0,212,255,0.25)" : "rgba(255,255,255,0.06)"}`,
         borderRight: `1px solid ${hovered ? "rgba(0,212,255,0.25)" : "rgba(255,255,255,0.06)"}`,
@@ -48,12 +50,31 @@ function ProjectCard({ project }: { project: Project }) {
         background: hovered ? "rgba(0,212,255,0.03)" : "rgba(255,255,255,0.01)",
         transition: "border-color 0.3s, background 0.3s",
       }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+      {project.gifUrl && (
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          opacity: hovered ? 1 : 0, transition: "opacity 0.4s ease",
+        }}>
+          <video
+            src={project.gifUrl}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+          />
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to bottom, rgba(10,10,15,0.55) 0%, rgba(10,10,15,0.82) 60%, rgba(10,10,15,0.97) 100%)",
+          }} />
+        </div>
+      )}
+      <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
         <h3 style={{ fontSize: 16, fontWeight: 300, color: hovered ? "var(--cyan)" : "var(--white)", letterSpacing: "0.04em", transition: "color 0.3s" }}>{project.title}</h3>
         <StatusBadge status={project.status} badge={project.badge} />
       </div>
-      <p style={{ fontSize: 14, lineHeight: 1.8, color: hovered ? "var(--grey-300)" : "var(--grey-400)", flex: 1, transition: "color 0.3s" }}>{project.description}</p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+      <p style={{ position: "relative", fontSize: 14, lineHeight: 1.8, color: hovered ? "var(--grey-300)" : "var(--grey-400)", flex: 1, transition: "color 0.3s" }}>{project.description}</p>
+      <div style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: 6 }}>
         {project.tech.map((t) => (
           <span key={t} style={{ border: `1px solid ${hovered ? "rgba(0,212,255,0.3)" : "rgba(255,255,255,0.08)"}`, borderRadius: 2, padding: "3px 8px", fontSize: 11, color: hovered ? "var(--grey-200)" : "var(--grey-600)", letterSpacing: "0.06em", fontFamily: "monospace", transition: "border-color 0.3s, color 0.3s" }}>
             {t}
@@ -61,7 +82,7 @@ function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       {(project.githubUrl || project.liveUrl) && (
-        <div style={{ display: "flex", gap: 12 }}>
+        <div style={{ position: "relative", display: "flex", gap: 12 }}>
           {project.githubUrl && (
             <a
               href={project.githubUrl}

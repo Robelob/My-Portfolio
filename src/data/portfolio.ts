@@ -56,6 +56,7 @@ export interface Project {
   badge?: string;
   liveUrl: string | null;
   githubUrl: string | null;
+  gifUrl?: string;
 }
 
 /* ─── Data ────────────────────────────────────────────────────────────────── */
@@ -155,6 +156,17 @@ export const languages: Language[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: "Memex — Local Multimodal RAG System",
+    description:
+      "A fully local, multimodal RAG system that indexes PDFs, audio, video, and images — then lets you chat with them, search visually, and explore connections between ideas. Nothing leaves your machine. Built on Qdrant for vector search, Neo4j for knowledge-graph traversal, Whisper for audio/video transcription, and CLIP for text-to-image retrieval. Streams cited answers via a Next.js interface backed by a FastAPI orchestration layer — all orchestrated with Docker Compose and running entirely on local hardware with no cloud subscriptions or per-query cost.",
+    tech: ["Python", "FastAPI", "Qdrant", "Neo4j", "Whisper", "CLIP", "Next.js", "Ollama", "Docker"],
+    status: "completed",
+    badge: "Open Source",
+    liveUrl: null,
+    githubUrl: "https://github.com/Robelob/memex",
+    gifUrl: "/memex.mp4",
+  },
   {
     title: "Ambar — AI Video Editor Plugin for Adobe Premiere Pro",
     description:
